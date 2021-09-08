@@ -11,6 +11,13 @@ body{
     background: orange;
     overflow: hidden;
 }
+.container{
+    display: grid;
+    place-items: center;
+    min-height: 100%;
+    /* background: orange; */
+    overflow: hidden;
+}
 
 h1{
     pointer-events: none;
