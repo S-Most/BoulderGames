@@ -9,6 +9,7 @@ body{
     place-items: center;
     min-height: 100vh;
     background: orange;
+    overflow: hidden;
 }
 
 h1{
