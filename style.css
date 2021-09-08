@@ -8,8 +8,25 @@ body{
     display: grid;
     place-items: center;
     min-height: 100vh;
+    background: orange;
+    overflow: hidden;
 }
 
 h1{
     pointer-events: none;
+    font-size: 12vw;
+}
+
+button{
+    font-size: 6vw;
+    padding: 1rem;
+    border: none;
+    background: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        blue
+        );
 }
