@@ -29,9 +29,12 @@ function setSpeech() {
 
 let s = setSpeech();
 s.then((voices) => {
-    console.log(voices)
-    console.log("speech gezet naar =>", voices[18].name);
-    mySpeech = voices[18]
+    voices.forEach(voice => {
+        if (voice.lang == "nl-NL"){
+            console.log("speech gezet naar =>", voice.name);
+            mySpeech = voice;
+        }
+    })
 });
 
 
