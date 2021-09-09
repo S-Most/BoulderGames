@@ -28,11 +28,11 @@ function setSpeech() {
 }
 
 let s = setSpeech();
-s.then((voices) => mySpeech = voices[18]);
+s.then((voices) => {
+    console.log("text gezet naar =>", voices[18]);
+    mySpeech = voices[18]
+});
 
-function changeSpeech(taal){
-    
-}
 
 easyIntervalButton.addEventListener("click", function(){
     setDificulty(5000);
