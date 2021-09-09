@@ -60,15 +60,20 @@ button{
     .container{
         flex-direction: row;
         flex-wrap: wrap;
-        max-width: 100%;
+        max-width: 90vw;
+    }
+
+    button:first-of-type{
+        width: 90vw;
     }
 
     button{
         width: unset;
+        max-width: unset;
+        flex-grow: 1;
     }
 
-    button:first-of-type{
-        width: 100%;
-    }
+
+
     
 }
