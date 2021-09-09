@@ -35,6 +35,7 @@ s.then((voices) => {
             mySpeech = voice;
         }
     })
+    console.log(voices)
 });
 
 
