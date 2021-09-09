@@ -58,6 +58,7 @@ button {
 
 @media (max-width: 1800px) {
     @media (orientation: landscape) {
+
         .container {
             flex-direction: row;
             flex-wrap: wrap;
@@ -72,6 +73,12 @@ button {
             width: unset;
             max-width: unset;
             flex-grow: 1;
+        }
+    }
+
+    @media (orientation: portrait) {
+        h1{
+            font-size: 16vw;
         }
     }
 }
