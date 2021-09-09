@@ -1,6 +1,8 @@
 const tekst = document.querySelector("h1");
-const clickChangeButton = document.querySelectorAll("button")[0]
-const intervalButton = document.querySelectorAll("button")[1]
+const clickChangeButton = document.querySelectorAll("button")[0];
+const easyIntervalButton = document.querySelectorAll("button")[1];
+const mediumIntervalButton = document.querySelectorAll("button")[2];
+const hardIntervalButton = document.querySelectorAll("button")[3];
 
 const kleuren = ["red", "green", "blue", "yellow", "orange"];
 const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
@@ -9,11 +11,24 @@ const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 let vorigeKeuze = 0;
 let nederlands = window.speechSynthesis.getVoices()[18];
 
-intervalButton.addEventListener("click", function(){
+easyIntervalButton.addEventListener("click", function(){
+    setDificulty(5000);
+})
+
+mediumIntervalButton.addEventListener("click", function(){
+    setDificulty(3000);
+})
+
+hardIntervalButton.addEventListener("click", function(){
+    setDificulty(1800);
+})
+
+function setDificulty(dificulty){
     hideButtons();
     kiesKleur();
-    setInterval(kiesKleur, 5000);
-})
+    setInterval(kiesKleur, dificulty);
+}
+
 
 clickChangeButton.addEventListener("click", function(){  
     document.addEventListener("click", kiesKleur);
