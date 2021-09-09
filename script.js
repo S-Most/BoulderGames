@@ -9,7 +9,7 @@ const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
 let vorigeKeuze = 0;
-var mySpeech;
+let mySpeech;
 
 function setSpeech() {
     return new Promise(
@@ -35,7 +35,7 @@ s.then((voices) => {
             mySpeech = voice;
         }
     })
-    if(mySpeech.lang != "nl-NL"){
+    if(!mySpeech){
         mySpeech = voices[0];
         console.log("Beperkte talen in de browser, een standaard is gekozen");
     }
