@@ -6,22 +6,30 @@ const kleuren = ["red", "green", "blue", "yellow", "orange"];
 const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
+let vorigeKeuze = 0;
 let nederlands = window.speechSynthesis.getVoices()[18];
-
-document.addEventListener("click", kiesKleur);
 
 intervalButton.addEventListener("click", function(){
     setInterval(kiesKleur, 5000)
     hideButtons()
 })
 
-clickChangeButton.addEventListener("click", hideButtons)
+clickChangeButton.addEventListener("click", function(){  
+    document.addEventListener("click", kiesKleur);
+    hideButtons();
+})
 
 function kiesKleur(){
     let kleurIndex = Math.floor(Math.random() * kleuren.length)
     let kleur = kleuren[kleurIndex]
 
-    let ledemaatIndex = Math.floor(Math.random() *ledematen.length)
+    let ledemaatIndex = Math.floor(Math.random() *ledematen.length);   
+
+    while (ledemaatIndex == vorigeKeuze){
+        ledemaatIndex = Math.floor(Math.random() *ledematen.length); 
+    }
+
+    vorigeKeuze = ledemaatIndex;
     let ledemaat = ledematen[ledemaatIndex];
     let spreekKleur = spreekKleuren[kleurIndex];
 
@@ -39,7 +47,7 @@ function spreek(color, limb){
     var msg = new SpeechSynthesisUtterance(uitspreken);
     msg.rate = 1;
     msg.pitch = 1;
-    msg.lang = "NL";
+    msg.lang = "nl";
     msg.voice = nederlands;
     msg.volume = 100;
     window.speechSynthesis.speak(msg);
