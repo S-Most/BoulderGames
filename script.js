@@ -36,9 +36,9 @@ s.then((voices) => {
         }
     })
     if(mySpeech.lang != "nl-NL"){
-        mySpeech = voices[0]
+        mySpeech = voices[0];
+        console.log("Beperkte talen in de browser, een standaard is gekozen");
     }
-    console.log(voices)
 });
 
 
