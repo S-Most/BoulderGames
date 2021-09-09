@@ -10,8 +10,9 @@ let vorigeKeuze = 0;
 let nederlands = window.speechSynthesis.getVoices()[18];
 
 intervalButton.addEventListener("click", function(){
-    setInterval(kiesKleur, 5000)
-    hideButtons()
+    hideButtons();
+    kiesKleur();
+    setInterval(kiesKleur, 5000);
 })
 
 clickChangeButton.addEventListener("click", function(){  
@@ -26,7 +27,7 @@ function kiesKleur(){
     let ledemaatIndex = Math.floor(Math.random() *ledematen.length);   
 
     while (ledemaatIndex == vorigeKeuze){
-        ledemaatIndex = Math.floor(Math.random() *ledematen.length); 
+        ledemaatIndex = Math.floor(Math.random() * ledematen.length); 
     }
 
     vorigeKeuze = ledemaatIndex;
