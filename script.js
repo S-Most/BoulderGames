@@ -9,7 +9,7 @@ const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
 let vorigeKeuze = 0;
-let mySpeech;
+var mySpeech;
 
 function setSpeech() {
     return new Promise(
