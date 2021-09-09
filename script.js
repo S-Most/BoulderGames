@@ -67,6 +67,7 @@ function spreek(color, limb){
     msg.voice = nederlands;
     msg.volume = 100;
     window.speechSynthesis.speak(msg);
+    console.log(msg);
 }
 
 function hideButtons(){
