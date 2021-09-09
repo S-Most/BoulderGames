@@ -35,6 +35,9 @@ s.then((voices) => {
             mySpeech = voice;
         }
     })
+    if(mySpeech.lang != "nl-NL"){
+        mySpeech = voices[0]
+    }
     console.log(voices)
 });
 
