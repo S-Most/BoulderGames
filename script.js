@@ -29,7 +29,8 @@ function setSpeech() {
 
 let s = setSpeech();
 s.then((voices) => {
-    console.log("text gezet naar =>", voices[18].name);
+    console.log(voices)
+    console.log("speech gezet naar =>", voices[18].name);
     mySpeech = voices[18]
 });
 
