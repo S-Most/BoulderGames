@@ -18,8 +18,8 @@ body{
     justify-content: center;
     align-items: center;
     gap: 2rem;
-
     position: relative;
+    width: 100vw;
 }
 
 h1{
@@ -53,6 +53,22 @@ button{
         yellow 45%,
         green 65%,
         blue 85%
-        );
-        
+        );     
+}
+
+@media (orientation: landscape) {
+    .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    button{
+        width: unset;
+    }
+
+    button:first-of-type{
+        width: 100%;
+    }
+    
 }
