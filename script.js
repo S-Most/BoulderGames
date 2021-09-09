@@ -9,7 +9,30 @@ const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
 let vorigeKeuze = 0;
-let nederlands = window.speechSynthesis.getVoices()[18];
+let mySpeech;
+
+function setSpeech() {
+    return new Promise(
+        function (resolve, reject) {
+            let synth = window.speechSynthesis;
+            let id;
+
+            id = setInterval(() => {
+                if (synth.getVoices().length !== 0) {
+                    resolve(synth.getVoices());
+                    clearInterval(id);
+                }
+            }, 10);
+        }
+    )
+}
+
+let s = setSpeech();
+s.then((voices) => mySpeech = voices[18]);
+
+function changeSpeech(taal){
+    
+}
 
 easyIntervalButton.addEventListener("click", function(){
     setDificulty(5000);
@@ -28,7 +51,6 @@ function setDificulty(dificulty){
     kiesKleur();
     setInterval(kiesKleur, dificulty);
 }
-
 
 clickChangeButton.addEventListener("click", function(){  
     document.addEventListener("click", kiesKleur);
@@ -59,15 +81,15 @@ function changeDisplay(color, limb){
 }
 
 function spreek(color, limb){
+
     let uitspreken = limb + " op " + color;
     var msg = new SpeechSynthesisUtterance(uitspreken);
     msg.rate = 1;
     msg.pitch = 1;
-    msg.lang = "nl";
-    msg.voice = nederlands;
+    msg.lang = "nl-NL";
+    msg.voice = mySpeech;
     msg.volume = 100;
     window.speechSynthesis.speak(msg);
-    console.log(msg);
 }
 
 function hideButtons(){
