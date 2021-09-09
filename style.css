@@ -56,7 +56,7 @@ button {
     );
 }
 
-@media (resolution: 150dpi) {
+@media (max-width: 1800px) {
     @media (orientation: landscape) {
         .container {
             flex-direction: row;
