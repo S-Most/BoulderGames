@@ -42,11 +42,6 @@ body {
     align-items: center;
 }
 
-.feet.left,
-.arm.left{
-    transform: scaleX(-1);
-}
-
 .feet{
     bottom: 24px;
 }
@@ -61,6 +56,11 @@ body {
 
 .left{
     left: 24px;
+}
+
+.feet.left,
+.arm.left{
+    transform: scaleX(-1);
 }
 
 h1 {
