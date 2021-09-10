@@ -92,7 +92,7 @@ function changeDisplay(color, limb){
 }
 
 function changeLimbDisplay(color, limbIndex) {
-    document.querySelectorAll(".limb")[limbIndex].style.backgroundColor = color;
+    document.querySelectorAll(".limb")[limbIndex].style.borderColor = color;
 }
 
 function spreek(color, limb){
