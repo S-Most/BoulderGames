@@ -56,6 +56,7 @@ hardIntervalButton.addEventListener("click", function(){
 
 function setDificulty(dificulty){
     hideButtons();
+    showLimbs();
     kiesKleur();
     setInterval(kiesKleur, dificulty);
 }
@@ -63,6 +64,7 @@ function setDificulty(dificulty){
 clickChangeButton.addEventListener("click", function(){  
     document.addEventListener("click", kiesKleur);
     hideButtons();
+    showLimbs();
 })
 
 function kiesKleur(){
@@ -80,16 +82,20 @@ function kiesKleur(){
     let spreekKleur = spreekKleuren[kleurIndex];
 
     changeDisplay(kleur, ledemaat);
+    changeLimbDisplay(kleur, ledemaatIndex)
     spreek(spreekKleur, ledemaat);
 }
 
 function changeDisplay(color, limb){
     document.body.style.backgroundColor = color;
-    tekst.textContent = limb;    
+    tekst.textContent = limb;  
+}
+
+function changeLimbDisplay(color, limbIndex) {
+    document.querySelectorAll(".limb")[limbIndex].style.backgroundColor = color;
 }
 
 function spreek(color, limb){
-
     let uitspreken = limb + " op " + color;
     var msg = new SpeechSynthesisUtterance(uitspreken);
     msg.rate = 1;
@@ -103,5 +109,11 @@ function spreek(color, limb){
 function hideButtons(){
     document.querySelectorAll("button").forEach((button)=>{
         button.hidden = true;
+    })
+}
+
+function showLimbs(){
+    document.querySelectorAll(".limb").forEach((limb)=> {
+        limb.style.opacity = 1
     })
 }

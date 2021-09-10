@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     background: orange;
     overflow: hidden;
+    position: relative;
 }
 .container {
     display: flex;
@@ -20,6 +21,45 @@ body {
     gap: 2rem;
     position: relative;
     width: 100vw;
+}
+
+.limb{
+    /* StartValue */
+    opacity: 0;
+    position: absolute;
+    width: min(80px, 15vw);
+    aspect-ratio: 1 / 1;
+    font-size: 36px;
+
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    border: rgba(0,0,0,0.5) 5px solid;
+    z-index: -1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feet.right,
+.arm.left{
+    transform: scaleX(-1);
+}
+
+.feet{
+    bottom: 24px;
+}
+
+.arm {
+    top: 24px;
+}
+
+.right{
+    right: 24px;
+}
+
+.left{
+    left: 24px;
 }
 
 h1 {
