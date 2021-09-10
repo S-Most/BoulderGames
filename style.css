@@ -31,10 +31,10 @@ body {
     aspect-ratio: 1 / 1;
     font-size: 28px;
 
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.8);
     border-radius: 50%;
     border: rgba(0,0,0,0.5) 8px solid;
-    box-shadow: 0 0 0 5px rgba(255,255,255,0.3);
+    box-shadow: 0 0 0 8px rgba(255,255,255,0.3);
     z-index: -1;
 
     display: flex;
