@@ -39,8 +39,11 @@ s.then((voices) => {
     if(!mySpeech){
         mySpeech = voices[0];
         console.log("Beperkte talen in de browser, " + voices[0].lang + " is gekozen");
+        voiceLanguageElem.innerText = voices[0].lang;
+    } else {
+        voiceLanguageElem.innerText = mySpeech.lang;
     }
-    voiceLanguageElem.innerText = voices[0].lang;
+    
 });
 
 
