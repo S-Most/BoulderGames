@@ -3,7 +3,7 @@ const clickChangeButton = document.querySelectorAll("button")[0];
 const easyIntervalButton = document.querySelectorAll("button")[1];
 const mediumIntervalButton = document.querySelectorAll("button")[2];
 const hardIntervalButton = document.querySelectorAll("button")[3];
-const voiceLanguageElem = document.querySelector("h3");
+// const voiceLanguageElem = document.querySelector("h3");
 
 const kleuren = ["red", "green", "blue", "yellow", "orange"];
 const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
@@ -39,10 +39,8 @@ s.then((voices) => {
     if(!mySpeech){
         mySpeech = voices[0];
         console.log("Beperkte talen in de browser, " + voices[0].lang + " is gekozen");
-        voiceLanguageElem.innerText = voices[0].lang;
-    } else {
-        voiceLanguageElem.innerText = mySpeech.lang;
     }
+    // voiceLanguageElem.innerText = mySpeech.lang;
     
 });
 
