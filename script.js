@@ -37,7 +37,7 @@ s.then((voices) => {
     })
     if(!mySpeech){
         mySpeech = voices[0];
-        console.log("Beperkte talen in de browser, een standaard is gekozen");
+        console.log("Beperkte talen in de browser, " + voices[0].lang + " is gekozen");
     }
 });
 
@@ -100,6 +100,7 @@ function spreek(color, limb){
     var msg = new SpeechSynthesisUtterance(uitspreken);
     msg.rate = 1;
     msg.pitch = 1;
+    // msg.lang = "nl-NL";
     msg.lang = "nl-NL";
     msg.voice = mySpeech;
     msg.volume = 100;
