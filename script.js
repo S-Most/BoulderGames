@@ -1,8 +1,9 @@
 const tekst = document.querySelector("h1");
-const clickChangeButton = document.querySelectorAll("button")[0];
-const easyIntervalButton = document.querySelectorAll("button")[1];
-const mediumIntervalButton = document.querySelectorAll("button")[2];
-const hardIntervalButton = document.querySelectorAll("button")[3];
+// const clickChangeButton = document.querySelectorAll("button")[0];
+const easyIntervalButton = document.querySelectorAll("button")[0];
+const mediumIntervalButton = document.querySelectorAll("button")[1];
+const hardIntervalButton = document.querySelectorAll("button")[2];
+const soundIcon = document.querySelector(".soundIcon")
 // const voiceLanguageElem = document.querySelector("h3");
 
 const kleuren = ["green", "yellow", "orange", "blue", "red"];
@@ -49,6 +50,16 @@ s.then((voices) => {
     }    
 });
 
+soundIcon.addEventListener("click", () => {
+    if (soundIcon.innerHTML == "🔈"){
+        soundIcon.innerHTML = "🔊";
+        setSound = true;
+    } else {
+        soundIcon.innerHTML = "🔈";
+        setSound = false;
+    }
+})
+
 
 easyIntervalButton.addEventListener("click", () => {
     huidige_kleuren = kleuren.splice(0, 3)
@@ -69,23 +80,10 @@ hardIntervalButton.addEventListener("click", () => {
     document.body.addEventListener("click", kiesKleur);
     hideButtons();
     showLimbs();
-
-    // setDificulty(1500)
-    // myRate = 1.3
 })
 
-// function setDificulty(dificulty){
-//     hideButtons();
-//     showLimbs();
-//     kiesKleur();
-//     setInterval(kiesKleur, dificulty);
-// }
 
-clickChangeButton.addEventListener("click", function(){  
-    document.addEventListener("click", kiesKleur);
-    hideButtons();
-    showLimbs();
-})
+
 
 function kiesKleur(){
     
