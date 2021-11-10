@@ -9,27 +9,32 @@ const kleuren = ["red", "green", "blue", "yellow", "orange"];
 const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
+let limb_on_color = {
+    Rechterhand: "leeg",
+    Linkerhand: "leeg",
+    Linkervoet: "leeg",
+    Rechtervoet: "leeg",
+}
+
 let vorigeKeuze = 0;
 let mySpeech;
+let myRate = 1;
 
 function setSpeech() {
-    return new Promise(
-        function (resolve, reject) {
-            let synth = window.speechSynthesis;
-            let id;
+    return new Promise((resolve) =>{
 
-            id = setInterval(() => {
-                if (synth.getVoices().length !== 0) {
-                    resolve(synth.getVoices());
-                    clearInterval(id);
-                }
-            }, 10);
-        }
-    )
+        id = setInterval(() => {
+            if (window.speechSynthesis.getVoices().length !== 0) {
+                resolve(window.speechSynthesis.getVoices());
+                clearInterval(id);
+            }
+        }, 10);
+    })
 }
 
 let s = setSpeech();
 s.then((voices) => {
+    console.log(voices)
     voices.forEach(voice => {
         if (voice.lang == "nl-NL"){
             console.log("speech gezet naar =>", voice.name);
@@ -39,22 +44,21 @@ s.then((voices) => {
     if(!mySpeech){
         mySpeech = voices[0];
         console.log("Beperkte talen in de browser, " + voices[0].lang + " is gekozen");
-    }
-    // voiceLanguageElem.innerText = mySpeech.lang;
-    
+    }    
 });
 
 
-easyIntervalButton.addEventListener("click", function(){
+easyIntervalButton.addEventListener("click", () => {
     setDificulty(5000);
 })
 
-mediumIntervalButton.addEventListener("click", function(){
+mediumIntervalButton.addEventListener("click", () => {
     setDificulty(3000);
 })
 
-hardIntervalButton.addEventListener("click", function(){
-    setDificulty(1800);
+hardIntervalButton.addEventListener("click", () => {
+    setDificulty(1200);
+    myRate = 1.3
 })
 
 function setDificulty(dificulty){
@@ -71,19 +75,28 @@ clickChangeButton.addEventListener("click", function(){
 })
 
 function kiesKleur(){
-    let kleurIndex = Math.floor(Math.random() * kleuren.length)
-    let kleur = kleuren[kleurIndex]
-
-    let ledemaatIndex = Math.floor(Math.random() *ledematen.length);   
-
+    
+    let ledemaatIndex = Math.floor(Math.random() * ledematen.length);   
+    
     while (ledemaatIndex == vorigeKeuze){
         ledemaatIndex = Math.floor(Math.random() * ledematen.length); 
     }
-
     vorigeKeuze = ledemaatIndex;
     let ledemaat = ledematen[ledemaatIndex];
+
+    let kleurIndex = Math.floor(Math.random() * kleuren.length)
+    let kleur = kleuren[kleurIndex]
+
+    let huidige_kleur = limb_on_color[ledemaat]
+    while (huidige_kleur == kleur) {
+        kleurIndex = Math.floor(Math.random() * kleuren.length)
+        kleur = kleuren[kleurIndex]
+    }
+
     let spreekKleur = spreekKleuren[kleurIndex];
 
+    limb_on_color[ledemaat] = kleur;
+    console.log(limb_on_color);
     changeDisplay(kleur, ledemaat);
     changeLimbDisplay(kleur, ledemaatIndex)
     spreek(spreekKleur, ledemaat);
@@ -101,9 +114,8 @@ function changeLimbDisplay(color, limbIndex) {
 function spreek(color, limb){
     let uitspreken = limb + " op " + color;
     var msg = new SpeechSynthesisUtterance(uitspreken);
-    msg.rate = 1;
+    msg.rate = myRate;
     msg.pitch = 1;
-    // msg.lang = "nl-NL";
     msg.lang = "nl-NL";
     msg.voice = mySpeech;
     msg.volume = 100;
