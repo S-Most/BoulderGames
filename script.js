@@ -1,10 +1,8 @@
 const tekst = document.querySelector("h1");
-// const clickChangeButton = document.querySelectorAll("button")[0];
 const easyIntervalButton = document.querySelectorAll("button")[0];
 const mediumIntervalButton = document.querySelectorAll("button")[1];
 const hardIntervalButton = document.querySelectorAll("button")[2];
 const soundIcon = document.querySelector(".soundIcon")
-// const voiceLanguageElem = document.querySelector("h3");
 
 const kleuren = ["green", "yellow", "orange", "blue", "red"];
 let huidige_kleuren = [];
@@ -60,7 +58,6 @@ soundIcon.addEventListener("click", () => {
     }
 })
 
-
 easyIntervalButton.addEventListener("click", () => {
     huidige_kleuren = kleuren.splice(0, 3)
     document.body.addEventListener("click", kiesKleur);
@@ -81,9 +78,6 @@ hardIntervalButton.addEventListener("click", () => {
     hideButtons();
     showLimbs();
 })
-
-
-
 
 function kiesKleur(){
     
