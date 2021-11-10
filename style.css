@@ -9,10 +9,11 @@ body {
     display: grid;
     place-items: center;
     min-height: 100vh;
-    background: orange;
+    background: chocolate;
     overflow: hidden;
     position: relative;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -21,6 +22,11 @@ body {
     gap: 2rem;
     position: relative;
     width: 100vw;
+}
+
+img{
+    max-width: min(60vw, 300px);
+    aspect-ratio: 1/1;
 }
 
 h3{

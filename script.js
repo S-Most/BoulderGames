@@ -156,6 +156,7 @@ function hideButtons(){
     document.querySelectorAll("button").forEach((button)=>{
         button.hidden = true;
     })
+    document.querySelector("img").hidden = true;
 }
 
 function showLimbs(){
