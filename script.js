@@ -4,10 +4,10 @@ const mediumIntervalButton = document.querySelectorAll("button")[1];
 const hardIntervalButton = document.querySelectorAll("button")[2];
 const soundIcon = document.querySelector(".soundIcon")
 
-const kleuren = ["green", "yellow", "orange", "blue", "red"];
-let huidige_kleuren = [];
-const spreekKleuren = ["groen", "geel", "oranje", "blauw", "rood"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Rechtervoet", "Linkervoet"]
+const kleuren = ["green", "yellow", "orange", "blue", "red"];
+const spreekKleuren = ["groen", "geel", "oranje", "blauw", "rood"];
+let huidige_kleuren = [];
 
 let limb_on_color = {
     Rechterhand: "anywhere",
@@ -58,6 +58,7 @@ soundIcon.addEventListener("click", () => {
     }
 })
 
+// Set mode(more colors is harder)
 easyIntervalButton.addEventListener("click", () => {
     huidige_kleuren = kleuren.splice(0, 3)
     document.body.addEventListener("click", (e) => {
@@ -85,6 +86,7 @@ hardIntervalButton.addEventListener("click", () => {
     showLimbs();
 })
 
+// Select random color and limb
 function kiesKleur(event){
     
     let ledemaatIndex = Math.floor(Math.random() * ledematen.length);   
