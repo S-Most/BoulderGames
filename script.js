@@ -5,8 +5,9 @@ const mediumIntervalButton = document.querySelectorAll("button")[2];
 const hardIntervalButton = document.querySelectorAll("button")[3];
 // const voiceLanguageElem = document.querySelector("h3");
 
-const kleuren = ["red", "green", "blue", "yellow", "orange"];
-const spreekKleuren = ["rood", "groen", "blauw", "geel", "oranje"];
+const kleuren = ["green", "yellow", "orange", "blue", "red"];
+let huidige_kleuren = [];
+const spreekKleuren = ["groen", "geel", "oranje", "blauw", "rood"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
 let limb_on_color = {
@@ -49,16 +50,24 @@ s.then((voices) => {
 
 
 easyIntervalButton.addEventListener("click", () => {
-    setDificulty(5000);
+    huidige_kleuren = kleuren.splice(0, 3)
+    document.body.addEventListener("click", kiesKleur);
+    hideButtons();
+    showLimbs();
 })
 
 mediumIntervalButton.addEventListener("click", () => {
-    setDificulty(3000);
+    huidige_kleuren = kleuren.splice(0, 4)
+    document.body.addEventListener("click", kiesKleur);
+    hideButtons();
+    showLimbs();
 })
 
 hardIntervalButton.addEventListener("click", () => {
-    setDificulty(1200);
-    myRate = 1.3
+    huidige_kleuren = kleuren
+    document.body.addEventListener("click", kiesKleur);
+    hideButtons();
+    showLimbs();
 })
 
 function setDificulty(dificulty){
@@ -84,13 +93,13 @@ function kiesKleur(){
     vorigeKeuze = ledemaatIndex;
     let ledemaat = ledematen[ledemaatIndex];
 
-    let kleurIndex = Math.floor(Math.random() * kleuren.length)
-    let kleur = kleuren[kleurIndex]
+    let kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
+    let kleur = huidige_kleuren[kleurIndex]
 
     let huidige_kleur = limb_on_color[ledemaat]
     while (huidige_kleur == kleur) {
-        kleurIndex = Math.floor(Math.random() * kleuren.length)
-        kleur = kleuren[kleurIndex]
+        kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
+        kleur = huidige_kleuren[kleurIndex]
     }
 
     let spreekKleur = spreekKleuren[kleurIndex];
