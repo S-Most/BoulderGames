@@ -11,10 +11,10 @@ const spreekKleuren = ["groen", "geel", "oranje", "blauw", "rood"];
 const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
 
 let limb_on_color = {
-    Rechterhand: "leeg",
-    Linkerhand: "leeg",
-    Linkervoet: "leeg",
-    Rechtervoet: "leeg",
+    Rechterhand: "anywhere",
+    Linkerhand: "anywhere",
+    Linkervoet: "anywhere",
+    Rechtervoet: "anywhere",
 }
 
 let vorigeKeuze = 0;
@@ -68,14 +68,17 @@ hardIntervalButton.addEventListener("click", () => {
     document.body.addEventListener("click", kiesKleur);
     hideButtons();
     showLimbs();
+
+    // setDificulty(1500)
+    // myRate = 1.3
 })
 
-function setDificulty(dificulty){
-    hideButtons();
-    showLimbs();
-    kiesKleur();
-    setInterval(kiesKleur, dificulty);
-}
+// function setDificulty(dificulty){
+//     hideButtons();
+//     showLimbs();
+//     kiesKleur();
+//     setInterval(kiesKleur, dificulty);
+// }
 
 clickChangeButton.addEventListener("click", function(){  
     document.addEventListener("click", kiesKleur);
@@ -97,7 +100,7 @@ function kiesKleur(){
     let kleur = huidige_kleuren[kleurIndex]
 
     let huidige_kleur = limb_on_color[ledemaat]
-    while (huidige_kleur == kleur) {
+    while (huidige_kleur == kleur || (kleur == "red" &&  (ledemaatIndex == 2 || ledemaatIndex == 3))) {
         kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
         kleur = huidige_kleuren[kleurIndex]
     }
@@ -117,7 +120,7 @@ function changeDisplay(color, limb){
 }
 
 function changeLimbDisplay(color, limbIndex) {
-    document.querySelectorAll(".limb")[limbIndex].style.borderColor = color;
+    document.querySelectorAll(".limb")[limbIndex].style.background = color;
 }
 
 function spreek(color, limb){
