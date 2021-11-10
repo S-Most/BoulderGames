@@ -20,6 +20,7 @@ let limb_on_color = {
 let vorigeKeuze = 0;
 let mySpeech;
 let myRate = 1;
+let setSound = true;
 
 function setSpeech() {
     return new Promise((resolve) =>{
@@ -111,7 +112,9 @@ function kiesKleur(){
     console.log(limb_on_color);
     changeDisplay(kleur, ledemaat);
     changeLimbDisplay(kleur, ledemaatIndex)
-    spreek(spreekKleur, ledemaat);
+    if (setSound){
+        spreek(spreekKleur, ledemaat);
+    }
 }
 
 function changeDisplay(color, limb){
