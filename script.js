@@ -7,7 +7,7 @@ const soundIcon = document.querySelector(".soundIcon")
 const kleuren = ["green", "yellow", "orange", "blue", "red"];
 let huidige_kleuren = [];
 const spreekKleuren = ["groen", "geel", "oranje", "blauw", "rood"];
-const ledematen = [ "Rechterhand", "Linkerhand", "Linkervoet", "Rechtervoet"]
+const ledematen = [ "Rechterhand", "Linkerhand", "Rechtervoet", "Linkervoet"]
 
 let limb_on_color = {
     Rechterhand: "anywhere",
@@ -35,7 +35,7 @@ function setSpeech() {
 
 let s = setSpeech();
 s.then((voices) => {
-    console.log(voices)
+    // console.log(voices)
     voices.forEach(voice => {
         if (voice.lang == "nl-NL"){
             console.log("speech gezet naar =>", voice.name);
@@ -44,7 +44,7 @@ s.then((voices) => {
     })
     if(!mySpeech){
         mySpeech = voices[0];
-        console.log("Beperkte talen in de browser, " + voices[0].lang + " is gekozen");
+        console.log("Beperkte talen in de browser, " + voices[0].name + " is gekozen");
     }    
 });
 
@@ -60,26 +60,32 @@ soundIcon.addEventListener("click", () => {
 
 easyIntervalButton.addEventListener("click", () => {
     huidige_kleuren = kleuren.splice(0, 3)
-    document.body.addEventListener("click", kiesKleur);
+    document.body.addEventListener("click", (e) => {
+        kiesKleur(e)
+    });
     hideButtons();
     showLimbs();
 })
 
 mediumIntervalButton.addEventListener("click", () => {
     huidige_kleuren = kleuren.splice(0, 4)
-    document.body.addEventListener("click", kiesKleur);
+    document.body.addEventListener("click", (e) => {
+        kiesKleur(e)
+    });
     hideButtons();
     showLimbs();
 })
 
 hardIntervalButton.addEventListener("click", () => {
     huidige_kleuren = kleuren
-    document.body.addEventListener("click", kiesKleur);
+    document.body.addEventListener("click", (e) => {
+        kiesKleur(e)
+    });
     hideButtons();
     showLimbs();
 })
 
-function kiesKleur(){
+function kiesKleur(event){
     
     let ledemaatIndex = Math.floor(Math.random() * ledematen.length);   
     
@@ -100,8 +106,23 @@ function kiesKleur(){
 
     let spreekKleur = spreekKleuren[kleurIndex];
 
+
+    // Change Fixed Limb
+    if (event.target.classList.contains("limb")){
+        let index = 0;
+
+        if (!event.target.classList.contains("right")) {
+            index += 1
+        }
+        if (!event.target.classList.contains("arm")){
+            index += 2
+        }
+
+        ledemaatIndex = index
+        ledemaat = ledematen[index]
+    }
+
     limb_on_color[ledemaat] = kleur;
-    console.log(limb_on_color);
     changeDisplay(kleur, ledemaat);
     changeLimbDisplay(kleur, ledemaatIndex)
     if (setSound){

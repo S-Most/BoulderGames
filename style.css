@@ -49,7 +49,7 @@ h3{
     border-radius: 50%;
     border: rgba(0,0,0) 3px solid;
     box-shadow: 0 0 0 8px rgba(255,255,255,0.4);
-    z-index: -1;
+    z-index: 1;
 
     display: flex;
     justify-content: center;
