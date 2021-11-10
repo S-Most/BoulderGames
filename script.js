@@ -157,6 +157,7 @@ function hideButtons(){
         button.hidden = true;
     })
     document.querySelector("img").hidden = true;
+    document.querySelector("h3").hidden = true;
 }
 
 function showLimbs(){
