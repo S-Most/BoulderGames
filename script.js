@@ -35,7 +35,6 @@ function setSpeech() {
 
 let s = setSpeech();
 s.then((voices) => {
-    // console.log(voices)
     voices.forEach(voice => {
         if (voice.lang == "nl-NL"){
             console.log("speech gezet naar =>", voice.name);
@@ -97,18 +96,6 @@ function kiesKleur(event){
     vorigeKeuze = ledemaatIndex;
     let ledemaat = ledematen[ledemaatIndex];
 
-    let kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
-    let kleur = huidige_kleuren[kleurIndex]
-
-    let huidige_kleur = limb_on_color[ledemaat]
-    while (huidige_kleur == kleur || (kleur == "red" &&  (ledemaatIndex == 2 || ledemaatIndex == 3))) {
-        kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
-        kleur = huidige_kleuren[kleurIndex]
-    }
-
-    let spreekKleur = spreekKleuren[kleurIndex];
-
-
     // Change Fixed Limb
     if (event.target.classList.contains("limb")){
         let index = 0;
@@ -123,6 +110,17 @@ function kiesKleur(event){
         ledemaatIndex = index
         ledemaat = ledematen[index]
     }
+
+    let kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
+    let kleur = huidige_kleuren[kleurIndex]
+
+    let huidige_kleur = limb_on_color[ledemaat]
+    while (huidige_kleur == kleur || (kleur == "red" &&  (ledemaatIndex == 2 || ledemaatIndex == 3))) {
+        kleurIndex = Math.floor(Math.random() * huidige_kleuren.length)
+        kleur = huidige_kleuren[kleurIndex]
+    }
+
+    let spreekKleur = spreekKleuren[kleurIndex];
 
     limb_on_color[ledemaat] = kleur;
     changeDisplay(kleur, ledemaat);
