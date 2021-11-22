@@ -10,10 +10,10 @@ const spreekKleuren = ["groen", "geel", "oranje", "blauw", "rood"];
 let huidige_kleuren = [];
 
 let limb_on_color = {
-    Rechterhand: "anywhere",
-    Linkerhand: "anywhere",
-    Linkervoet: "anywhere",
-    Rechtervoet: "anywhere",
+    Rechterhand: "leeg",
+    Linkerhand: "leeg",
+    Linkervoet: "leeg",
+    Rechtervoet: "leeg",
 }
 
 let vorigeKeuze = 0;
